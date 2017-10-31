@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Timer Queue</title>
+  <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+  <link href="css/styles.css" rel="stylesheet" type="text/css">
+</head>
+
+
+<body ng-app="timerApp">
+
+  <h1>Timer Queue</h1>
+  <div ng-controller="QueueController as queue" id="main-content">
+    
+    <!-- Testing Area -->
+    <p ng-bind="queue.timers[0].text"></p>
+    <p>{{queue.timers.length}}</p>
+
+    
+    
+    <!-- Control Buttons -->
+    <div id="controls">
+      <div id="buttons">
+        <button ng-click="queue.startTimer(queue.timers[0])" id="start">Start</button>
+        <button ng-click="queue.stopTimer(queue.timers[0])" id="stop">Stop</button>
+        <div id="counter">
+          <p ng-bind="queue.display()"></p>
+        </div>
+      </div>
+
+
+      <!-- Timer Queue -->
+      <div id="active-timers" class="queue">
+        <ul id="sortable">
+          <li ng-repeat="timer in queue.timers">
+            <span>{{ queue.index(timer, queue.timers) + 1 }}</span>
+            <input type="text" ng-model="timer.text" class="name">
+            <input type="text"
+              ng-model="timer.timeRemaining"
+              ng-model-options="{ updateOn: 'blur' }"
+              ng-blur="
+                "
+            >
+            <button ng-click="queue.resetTimer(timer)"><i class="fa fa-undo" aria-hidden="true"></i></span></button>
+            <button ng-click="queue.removeTimer(timer)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+            <label>Continue?</label>
+            <input type="checkbox" ng-model="timer.continue">
+            
+          </li>
+        </ul>
+        <button ng-click="queue.newTimer()" id="add-timer">Add New Timer</button>
+      </div>
+
+
+
+      <!-- Archived Timers -->
+      <div id="archived-timers" class="queue">
+        <ul>
+          <li ng-repeat="item in queue.archive">
+            <input type="text" ng-model="item.text">
+            <input type="text" ng-model="item.timeRemaining">
+            <label>Done?</label>
+            <input type="checkbox" ng-model="item.done">
+            <span>Index:  {{ queue.index(item, queue.archive) }}</span>
+            <button ng-click="queue.removeArchivedTimer(item)">Delete</button>
+            <button ng-click="queue.restore(item)">Restore</button>
+          </li>
+        </ul>
+      </div>
+
+
+
+
+    </div>
+    <!-- SCRIPTS -->
+
+    <!-- Vendor Scripts -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js'></script>
+
+    <!-- Application Scripts -->
+    <script src="js/app.js"></script>
+    <script src="js/services.js"></script>
+    <script src="js/controllers.js"></script>
+
+</body>
+
+</html>

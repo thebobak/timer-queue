@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css?family=Muli|Noto+Sans|Roboto+Mono|Titillium+Web');
+// font-family:font-family: 'Noto Sans', sans-serif;
+// font-family: 'Titillium Web', sans-serif;
+// font-family: 'Muli', sans-serif;
+// font-family: 'Roboto Mono', monospace;
+body {
+  font-family: 'Noto Sans', sans-serif;
+}
+
+#main-content {
+  box-sizing: border-box;
+  width: 90%;
+  margin: auto;
+  position: relative;
+}
+
+#controls {
+  #buttons {
+    box-sizing: border-box;
+    position: relative;
+    float: left;
+    button {
+      position: relative;
+      float: left;
+      font-size: 25px;
+      color: #ffffff;
+      font-weight: bold;
+      padding: 30px 30px;
+      text-decoration: none;
+      &#start {
+        background-color: #74ad5a;
+        border: 4px solid #3b6e22;
+        &:hover {
+          background-color: #68a54b;
+        }
+      }
+      &#stop {
+        background-color: #d0451b;
+        border: 4px solid #942911;
+        &:hover {
+          background-color: #bc3315;
+        }
+      }
+    }
+  }
+  #counter {
+    box-sizing: border-box;
+    position: relative;
+    float: left;
+    p {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 3em;
+      padding-left: 25px;
+    }
+  }
+}
+
+div#active-timers {
+  width: 90%;
+  clear: both;
+  float: left;
+  background: skyblue;
+  padding: 10px;
+  border: 1px solid black;
+}
+
+div#archived-timers {
+  width: 90%;
+  clear: both;
+  float: left;
+  background: grey;
+  padding: 10px;
+  border: 1px solid black;
+}
+
+input.name {
+  box-sizing: border-box;
+  border: 2px solid transparent;
+  background: transparent;
+  padding: 2px;
+  margin: 2px;
+  &:focus {
+    background: white;
+    border: 2px solid grey;
+  }
+}
+
+.queue {
+  padding: 0;
+}
+
+.queue li::before {
+  content: '=';
+}
+
+.queue li {
+  box-sizing: border-box;
+  border: 1px solid black;
+  border-bottom: none;
+  padding: 5px;
+  list-style: none;
+  &:nth-child(odd) {
+    background: #ededed;
+  }
+  &:nth-child(even) {
+    background: #cecece;
+  }
+  &:last-child {
+    border-bottom: 1px solid black;
+  }
+}

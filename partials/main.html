@@ -1,0 +1,26 @@
+<span>{{queue.remaining()}} of {{queue.timers.length}} remaining</span>
+<ul class="unstyled" id="sortable">
+  <li ng-repeat="timer in queue.timers">
+    <label class="checkbox">
+            <input type="checkbox" ng-model="timer.done">
+            <span class="done-{{timer.done}}">{{timer.text}}</span>
+            <input type="number" ng-model="timer.time">
+            <span>Index:  {{ queue.index(timer) }}</span>
+            <form ng-submit="queue.removeTimer(timer)" style="display:inline;">
+            <button>Delete</button>
+            </form>
+            
+          </label>
+  </li>
+</ul>
+<p>Time Remaining:
+  <span ng-bind="queue.sum()"></span></p>
+<br><br>
+<button ng-click="queue.startTimer(queue.timers[0])">Start</button>
+<button ng-click="queue.stopTimer(queue.timers[0])">Stop</button>
+
+<form ng-submit="queue.addTimer()">
+  <input type="text" ng-model="queue.timerText" size="30" placeholder="add new timer here">
+  <input type="number" ng-model="queue.timerDuration" placeholder="duration">
+  <input class="btn-primary" type="submit" value="add">
+</form>
